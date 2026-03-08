@@ -3,5 +3,5 @@ export default function WeatherApp(){
         <div>
             <h1>Weather App</h1>
         </div>
-    );
+  );
 }
