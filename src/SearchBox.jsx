@@ -3,7 +3,7 @@ import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 
-export default function SearchBox() {
+export default function SearchBox({updateInfo}) {
     let [city, setCity] = useState("");
 
 
@@ -18,12 +18,13 @@ export default function SearchBox() {
         city: city,
         temp: jsonResponse.main.temp,
         tempMin: jsonResponse.main.temp_min,
-        temMax: jsonResponse.main.temp_max,
+        tempMax: jsonResponse.main.temp_max,
         humidity: jsonResponse.main.humidity,
         feelsLike: jsonResponse.main.feels_like,
         weather: jsonResponse.weather[0].description,
       }
       console.log(result);
+      return result;
     }
 
 
@@ -32,23 +33,24 @@ export default function SearchBox() {
         setCity(event.target.value);
     }
 
-    let handleSubmit = (event) => {
+    let handleSubmit = async (event) => {
 
         event.preventDefault();
         console.log(city);
         setCity("");
-        getWeatherInfo();
+      let newInfo = await getWeatherInfo();
+      updateInfo(newInfo);
 
     }
 
     return (
         <div>
-            <h4>Search for the Weather</h4>
+           
             <form onSubmit={handleSubmit}>
                 <TextField value={city} onChange={handleCityInfo} id="city" label="City Name" variant="outlined" required /> <br /> <br />
                 <Button type='submit' variant="contained" endIcon={<SendIcon />}>
                     Send
-                </Button>
+                </Button> <br /><br />
             </form>
         </div>
     );
