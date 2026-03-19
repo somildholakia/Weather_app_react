@@ -3,12 +3,16 @@ import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 
+if(process.env.NODE_ENV != "production"){
+    require('dotenv').config();
+}
+
 export default function SearchBox({updateInfo}) {
     let [city, setCity] = useState("");
 
 
-    const API_URL = "http://api.openweathermap.org/data/2.5/weather";
-    const API_KEY = "c948ffbccd8a551eca9469af546199d0";
+    const API_URL = process.env.API_URL;
+    const API_KEY = process.env.API_KEY;
 
 
     let getWeatherInfo = async () => {
