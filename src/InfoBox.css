@@ -5,3 +5,7 @@
     text-shadow: 2px 0px 0px rgb(225, 31, 255);
 
 }
+
+.InfoBox{
+    background: linear-gradient(rgb(255, 105, 135),pink) !important;
+}

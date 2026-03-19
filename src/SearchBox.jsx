@@ -48,7 +48,7 @@ export default function SearchBox({updateInfo}) {
            
             <form onSubmit={handleSubmit}>
                 <TextField value={city} onChange={handleCityInfo} id="city" label="City Name" variant="outlined" required /> <br /> <br />
-                <Button type='submit' variant="contained" endIcon={<SendIcon />}>
+                <Button className='Button' type='submit' variant="contained" endIcon={<SendIcon />}>
                     Send
                 </Button> <br /><br />
             </form>
